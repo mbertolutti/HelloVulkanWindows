@@ -21,11 +21,10 @@ void HelloTriangleApplication::run() {
 
 void HelloTriangleApplication::initWindow() {
     glfwInit();
-
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-
     window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
     glfwSetWindowUserPointer(window, this);
+    glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
 }
 
 void HelloTriangleApplication::initVulkan() {
@@ -52,6 +51,11 @@ void HelloTriangleApplication::mainLoop() {
     }
 
     vkDeviceWaitIdle(device);
+}
+
+void HelloTriangleApplication::framebufferResizeCallback(GLFWwindow* window, int width, int height) {
+    auto app = reinterpret_cast<HelloTriangleApplication*>(glfwGetWindowUserPointer(window));
+    app->framebufferResized = true;
 }
 
 void HelloTriangleApplication::cleanupSwapChain() {

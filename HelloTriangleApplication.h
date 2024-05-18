@@ -2,13 +2,11 @@
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-#include <vulkan/vulkan.h>
 #include <vector>
 #include <optional>
 #include <set>
 #include <stdexcept>
 #include "VulkanUtils.h"
-#include "GLFWUtils.h"
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
