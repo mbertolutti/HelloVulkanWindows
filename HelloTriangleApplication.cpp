@@ -8,9 +8,14 @@
 #include <fstream>
 
 HelloTriangleApplication::HelloTriangleApplication()
-    : imageAvailableSemaphores(MAX_FRAMES_IN_FLIGHT),
-    renderFinishedSemaphores(MAX_FRAMES_IN_FLIGHT),
-    inFlightFences(MAX_FRAMES_IN_FLIGHT) {}
+    : window(nullptr), instance(VK_NULL_HANDLE), debugMessenger(VK_NULL_HANDLE), surface(VK_NULL_HANDLE),
+    physicalDevice(VK_NULL_HANDLE), device(VK_NULL_HANDLE), graphicsQueue(VK_NULL_HANDLE), presentQueue(VK_NULL_HANDLE),
+    swapChain(VK_NULL_HANDLE), swapChainImageFormat(VK_FORMAT_UNDEFINED), swapChainExtent({ 0, 0 }),
+    renderPass(VK_NULL_HANDLE), pipelineLayout(VK_NULL_HANDLE), graphicsPipeline(VK_NULL_HANDLE),
+    commandPool(VK_NULL_HANDLE), currentFrame(0), vertexBuffer(VK_NULL_HANDLE), vertexBufferMemory(VK_NULL_HANDLE),
+    imageAvailableSemaphores(MAX_FRAMES_IN_FLIGHT), renderFinishedSemaphores(MAX_FRAMES_IN_FLIGHT),
+    inFlightFences(MAX_FRAMES_IN_FLIGHT)
+{}
 
 void HelloTriangleApplication::run() {
     initWindow();
